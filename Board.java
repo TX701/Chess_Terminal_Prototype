@@ -26,8 +26,15 @@ public class Board {
             }
             System.out.println("");
         }
-        System.out.print("  ------------------");
+        System.out.print("  ---------------------------");
         System.out.print("\n     A  B  C  D  E  F  G  H");
+    }
+
+    public Piece tileToRowCol(String location) {
+        int col = location.charAt(0) - 65;
+        int row = 7 - Integer.parseInt(location.substring(1));
+
+        return board[row][col];
     }
 
 }
