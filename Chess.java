@@ -1,17 +1,17 @@
+import java.util.List;
+
 class Chess {
     public static void main(String[] args) { 
         Board board_manager = new Board();
 
         board_manager.printBoard();
 
-        board_manager.move("D7", "H5");
-        board_manager.move("C8", "D4");
-        board_manager.move("C7", "H6");
-        board_manager.move("E2", "E4");
-
-        board_manager.move("B8", "D5");
-
-        board_manager.pawnMovement("H2");
+        List<Tile> possibleMoves = board_manager.getLine(Board.board[6][0], 0, -1);
+        
+        for(int i=0;i<possibleMoves.size();i++){
+            System.out.println(possibleMoves.get(i).location);
+        } 
+    
 
         // board_manager.pawnMovement("A2");
         // board_manager.pawnMovement("A7");
