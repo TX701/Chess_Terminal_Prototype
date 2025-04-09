@@ -1,8 +1,8 @@
-class Tile {
-    int col;
-    int row;
-    String location;
-    Piece piece;
+public class Tile {
+    private int col;
+    private int row;
+    private String location;
+    private Piece piece;
 
     Tile[] starting_tiles = new Tile[32];
 
@@ -15,8 +15,16 @@ class Tile {
         this.piece = piece;
     }
 
-    public String getColChess(int col) {
+    private String getColChess(int col) {
         return String.valueOf((char) (col + 65));
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    public int getRow() {
+        return row;
     }
 
     public String getLocation() {
@@ -25,6 +33,14 @@ class Tile {
 
     public String getLocation(int col, int row) {
         return getColChess(col) + (8 - row); 
+    }
+
+    public Piece getPiece() {
+        return piece;
+    }
+
+    public void setPiece(Piece piece) {
+        this.piece = piece;
     }
 
     public void tileSetUp() {
@@ -38,8 +54,8 @@ class Tile {
         starting_tiles[7] = new Tile(7, 0, "H8", new Piece("Rook", "♜", 'B'));
 
         for (int i = 8; i < 16; i++) {
-            starting_tiles[i] = new Tile(i - 8, 1, getLocation(i - 8, 6), new Piece("Pawn", "♟", 'B'));
-            starting_tiles[i + 8] = new Tile(i - 8, 6, getLocation(i - 8, 1), new Piece("Pawn", "♙", 'W')); 
+            starting_tiles[i] = new Tile(i - 8, 6, getLocation(i - 8, 6), new Piece("Pawn", "♙", 'W'));
+            starting_tiles[i + 8] = new Tile(i - 8, 1, getLocation(i - 8, 1), new Piece("Pawn", "♟", 'B')); 
         }
 
         starting_tiles[24] = new Tile(0, 7, "A1", new Piece("Rook", "♖", 'W'));
@@ -70,7 +86,7 @@ class Tile {
                 if (tileFromArray(c, r) != null) {
                     board[r][c] = tileFromArray(c, r);
                 } else {
-                    board[r][c] = new Tile(c, r, getLocation(c, r), new Piece(null, "    ", 'N'));
+                    board[r][c] = new Tile(c, r, getLocation(c, r), new Piece(null, " ", 'N'));
                 }
             }
         }
